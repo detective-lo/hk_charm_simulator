@@ -75,14 +75,14 @@ void Equipment::setUsedCharms(int usedCharms) {
 bool Equipment::equipCharm(Charm chosenCharm) {
     // Check if charm slots are full
     if ((usedCharms+1) == maxCharms) {
-        cout << "Charm slots are full." << endl;
+        cout << ">Charm slots are full." << endl;
         return false;
     }
 
     // Check if charm is already equipped
     for (int i = 0; i < usedCharms; i++) {
         if (charms[i].getName() == chosenCharm.getName()) {
-            cout << chosenCharm.getName() << " is already equipped." << endl;
+            cout << ">" << chosenCharm.getName() << " is already equipped." << endl;
             return false;
         }
     }
@@ -94,7 +94,7 @@ bool Equipment::equipCharm(Charm chosenCharm) {
             return false;
         } 
         flipOvercharmed();
-        cout << "WARNING: You are now Overcharmed." << endl;
+        cout << ">WARNING: You are now Overcharmed." << endl;
     }
 
     charms[usedCharms] = chosenCharm;

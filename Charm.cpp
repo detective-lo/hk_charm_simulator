@@ -61,7 +61,3 @@ string Charm::getInfoWithDesc() const {
     info += "\n    " + desc;
     return info;
 }
-
-//int main() {
-//    cout << "Testing Charm." << endl;
-//}
