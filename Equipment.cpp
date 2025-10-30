@@ -105,6 +105,9 @@ bool Equipment::equipCharm(Charm chosenCharm) {
 }
 
 bool Equipment::removeCharm(Charm chosenCharm) {
+    // FOR SOME REASON IT DOESNT REMOVE THE RIGHT ONE
+    // Tested removing, adding notches, then re-adding charm
+
     Charm *newCharms = new Charm[maxCharms];
     bool found = false;
 
