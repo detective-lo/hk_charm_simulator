@@ -105,17 +105,12 @@ bool Equipment::equipCharm(Charm chosenCharm) {
 }
 
 bool Equipment::removeCharm(Charm chosenCharm) {
-    // FOR SOME REASON IT DOESNT REMOVE THE RIGHT ONE
-    // Tested removing, adding notches, then re-adding charm
-
     Charm *newCharms = new Charm[maxCharms];
     bool found = false;
 
     for (int i = 0; i < usedCharms; i++) {
         if (charms[i].getName() == chosenCharm.getName()) {
             found = true;
-            usedNotches -= charms[i].getNotches();
-            usedCharms--;
 
             for (int j = i; j < usedCharms-1 ; j++) {
                 newCharms[j] = charms[j+1];;
@@ -125,6 +120,13 @@ bool Equipment::removeCharm(Charm chosenCharm) {
             if (overcharmed && usedNotches <= maxNotches) {
                 flipOvercharmed();
             }
+
+            usedNotches -= charms[i].getNotches();
+            usedCharms--;
+            
+            // Deallocate old array and switch pointer to new array
+            delete[] charms;
+            charms = newCharms;
 
             return true; // charm was found and removed
 
